@@ -1,38 +1,58 @@
 /**
- * Contact form — choose ONE option below (Web3Forms is fastest to set up).
+ * ╔══════════════════════════════════════════════════════════════╗
+ * ║           MENTROID — Email Delivery Configuration           ║
+ * ╠══════════════════════════════════════════════════════════════╣
+ * ║  Fill in ONE of the two options below.                      ║
+ * ║  EmailJS is recommended — it works for BOTH forms.         ║
+ * ╚══════════════════════════════════════════════════════════════╝
  *
- * OPTION A — Web3Forms (recommended, ~2 minutes)
- * 1. https://web3forms.com → enter mentroid@mentroid.co.in → Create Access Key
- * 2. In Web3Forms dashboard: enable "Auto Responder" for confirmation emails
- * 3. Paste access key in web3formsAccessKey below
+ * ── OPTION A: EmailJS (Recommended) ─────────────────────────────
+ *  1. Go to https://www.emailjs.com and sign up (free tier = 200 emails/month)
+ *  2. Add Email Service → connect Gmail / Outlook for mentroid@mentroid.co.in
+ *     → copy the Service ID  (looks like: service_xxxxxxx)
+ *  3. Create Email Template for ADMIN (what YOU receive):
+ *       Subject : {{subject}}
+ *       Body    :
+ *         From   : {{from_name}} <{{from_email}}>
+ *         Mobile : {{mobile}}
+ *         Package: {{package_name}}
+ *         Location: {{location}}
+ *         Designation: {{designation}}
+ *         Details: {{general_details}}
+ *         Problem: {{problem_statement}}
+ *         Solution: {{expected_solution}}
+ *         Message: {{message}}
+ *       → copy the Template ID  (looks like: template_xxxxxxx)
+ *  4. Create Email Template for USER CONFIRMATION (what the sender receives):
+ *       To      : {{user_email}}
+ *       Subject : We received your message — Mentroid
+ *       Body    : Hi {{from_name}}, thanks for reaching out! We'll reply within 24 hours.
+ *       → copy the Template ID  (looks like: template_xxxxxxx)
+ *  5. Go to Account → Public Key → copy it  (looks like: xxxxxxxxxxxxxxxxxxxxxx)
+ *  6. Paste all three values below.
  *
- * OPTION B — EmailJS (https://www.emailjs.com)
- * 1. Connect email service for mentroid@mentroid.co.in
- * 2. Admin template → To: {{to_email}}, Reply-To: {{from_email}}
- *    Variables: {{to_email}} {{from_name}} {{from_email}} {{subject}} {{message}}
- * 3. Confirmation template → To: {{user_email}}
- *    Variables: {{user_email}} {{from_name}} {{from_email}} {{subject}} {{message}}
- * 4. Paste keys below
+ * ── OPTION B: Web3Forms (Simpler, no account needed) ────────────
+ *  1. Go to https://web3forms.com
+ *  2. Enter mentroid@mentroid.co.in → click "Create Access Key"
+ *  3. Paste the key in web3formsAccessKey below.
+ *  NOTE: Web3Forms does NOT support the extra quote fields (mobile, location etc.)
+ *        as separate columns — they will be bundled in the message body.
  */
+
 window.MENTROID_CONTACT = {
   toEmail: 'mentroid@mentroid.co.in',
 
-  web3formsAccessKey: '',
+  // ── Option B: Web3Forms ──────────────────────────────────────
+  web3formsAccessKey: '',   // e.g. 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 
+  // ── Option A: EmailJS ────────────────────────────────────────
   emailjs: {
-    publicKey: '',
-    serviceId: '',
-    adminTemplateId: '',
-    confirmationTemplateId: '',
+    publicKey:             '',   // Account → Public Key
+    serviceId:             '',   // e.g. 'service_xxxxxxx'
+    adminTemplateId:       '',   // Template that sends to YOU
+    confirmationTemplateId:'',   // Template that sends to the USER (optional)
   },
 };
 
-/* Backward compatibility */
-window.MENTROID_EMAILJS = {
-  toEmail: window.MENTROID_CONTACT.toEmail,
-  publicKey: window.MENTROID_CONTACT.emailjs.publicKey,
-  serviceId: window.MENTROID_CONTACT.emailjs.serviceId,
-  templateId: window.MENTROID_CONTACT.emailjs.adminTemplateId,
-  confirmationTemplateId: window.MENTROID_CONTACT.emailjs.confirmationTemplateId,
-  web3formsAccessKey: window.MENTROID_CONTACT.web3formsAccessKey,
-};
+/* ── Internal: keep backward-compat alias ── */
+window.MENTROID_EMAILJS = window.MENTROID_CONTACT;
