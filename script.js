@@ -217,3 +217,219 @@ applyTheme(localStorage.getItem('mentroid-theme') || 'dark');
   init();
   draw();
 })();
+
+// ── Get Quote Modal ──────────────────────────────────────────────
+(function () {
+  'use strict';
+
+  const modal     = document.getElementById('quote-modal');
+  const closeBtn  = document.getElementById('qmodal-close');
+  const form      = document.getElementById('quote-form');
+  const submitBtn = document.getElementById('quote-submit');
+  const statusEl  = document.getElementById('quote-form-status');
+  const pkgInput  = document.getElementById('qf-package');
+
+  if (!modal) return;
+
+  // Open modal
+  function openModal(packageName) {
+    pkgInput.value = packageName || '';
+
+    // Update package tag in header
+    let tag = modal.querySelector('.qmodal-package-tag');
+    if (packageName) {
+      if (!tag) {
+        tag = document.createElement('span');
+        tag.className = 'qmodal-package-tag';
+        modal.querySelector('.qmodal-header').appendChild(tag);
+      }
+      tag.textContent = '📦 ' + packageName;
+      tag.hidden = false;
+    } else if (tag) {
+      tag.hidden = true;
+    }
+
+    modal.removeAttribute('hidden');
+    document.body.style.overflow = 'hidden';
+    // Focus first input for accessibility
+    setTimeout(() => {
+      const first = form.querySelector('input:not([type="hidden"]):not([tabindex="-1"])');
+      if (first) first.focus();
+    }, 50);
+  }
+
+  // Close modal
+  function closeModal() {
+    modal.setAttribute('hidden', '');
+    document.body.style.overflow = '';
+    clearStatus();
+  }
+
+  // Trigger buttons on pricing cards
+  document.querySelectorAll('.quote-trigger').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      openModal(btn.dataset.package || '');
+    });
+  });
+
+  // Close on X button
+  closeBtn.addEventListener('click', closeModal);
+
+  // Close on overlay click (outside the box)
+  modal.addEventListener('click', function (e) {
+    if (e.target === modal) closeModal();
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !modal.hasAttribute('hidden')) closeModal();
+  });
+
+  // ── Form submission ──────────────────────────────────────────
+  function setStatus(type, message) {
+    if (!statusEl) return;
+    statusEl.hidden = false;
+    statusEl.textContent = message;
+    statusEl.className = 'form-status form-status--' + type;
+  }
+
+  function clearStatus() {
+    if (!statusEl) return;
+    statusEl.hidden = true;
+    statusEl.textContent = '';
+    statusEl.className = 'form-status';
+  }
+
+  function setLoading(loading) {
+    if (submitBtn) {
+      submitBtn.disabled = loading;
+      submitBtn.textContent = loading ? 'Sending…' : 'Send Quote Request';
+    }
+    form.querySelectorAll('input:not([type="hidden"]), select, textarea').forEach(function (el) {
+      el.disabled = loading;
+    });
+  }
+
+  function getValues() {
+    return {
+      name:             form.from_name.value.trim(),
+      email:            form.from_email.value.trim(),
+      mobile:           form.mobile.value.trim(),
+      designation:      form.designation.value.trim(),
+      location:         form.location.value.trim(),
+      general_details:  form.general_details.value.trim(),
+      problem:          form.problem_statement.value.trim(),
+      solution:         form.expected_solution.value.trim(),
+      package_name:     pkgInput.value.trim(),
+    };
+  }
+
+  function validate() {
+    const v = getValues();
+    if (form._honey && form._honey.value) return false;
+    if (!v.name)   { setStatus('error', 'Please enter your full name.'); form.from_name.focus(); return false; }
+    if (!v.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.email)) {
+      setStatus('error', 'Please enter a valid email address.'); form.from_email.focus(); return false;
+    }
+    if (!v.mobile) { setStatus('error', 'Please enter your mobile number.'); form.mobile.focus(); return false; }
+    if (!v.location) { setStatus('error', 'Please select your location.'); form.location.focus(); return false; }
+    if (!v.problem) { setStatus('error', 'Please describe your problem statement.'); form.problem_statement.focus(); return false; }
+    return true;
+  }
+
+  function buildMessage(v) {
+    return [
+      '📦 Package: '       + (v.package_name || 'General Enquiry'),
+      '👤 Name: '          + v.name,
+      '📧 Email: '         + v.email,
+      '📱 Mobile: '        + v.mobile,
+      '💼 Designation: '   + (v.designation || '—'),
+      '📍 Location: '      + v.location,
+      '📝 Details: '       + (v.general_details || '—'),
+      '❓ Problem: '       + v.problem,
+      '💡 Solution: '      + (v.solution || '—'),
+    ].join('\n');
+  }
+
+  function sendQuote() {
+    var v   = getValues();
+    var cfg = window.MENTROID_CONTACT || window.MENTROID_EMAILJS || {};
+    var mail = window.MentroidMail;
+
+    if (!mail) {
+      return Promise.reject(new Error('Mail helper not loaded. Please refresh the page.'));
+    }
+    if (!mail.isReady()) {
+      return Promise.reject(new Error('NOT_CONFIGURED'));
+    }
+
+    var subject = 'Quote Request – ' + (v.package_name || 'General') + ' | ' + v.name;
+    var message = buildMessage(v);
+
+    return mail.send({
+      // EmailJS template variables
+      to_email:          cfg.toEmail || 'mentroid@mentroid.co.in',
+      from_name:         v.name,
+      from_email:        v.email,
+      reply_to:          v.email,
+      subject:           subject,
+      message:           message,
+      // Extra fields (available in EmailJS template as {{variable}})
+      mobile:            v.mobile,
+      designation:       v.designation || '—',
+      location:          v.location,
+      general_details:   v.general_details || '—',
+      problem_statement: v.problem,
+      expected_solution: v.solution || '—',
+      package_name:      v.package_name || 'General Enquiry',
+      // Web3Forms fields
+      name:              v.name,
+      email:             v.email,
+    });
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    clearStatus();
+    if (!validate()) return;
+
+    setLoading(true);
+    sendQuote()
+      .then(function () {
+        setStatus('success', '🎉 Quote request sent! We\'ll get back to you within 24 hours.');
+        form.reset();
+        setTimeout(closeModal, 3000);
+      })
+      .catch(function (err) {
+        console.error('[Quote form]', err);
+        if (err && err.message === 'NOT_CONFIGURED') {
+          setStatus('error', 'Email delivery is not configured yet. Add your EmailJS keys in emailjs-config.js.');
+        } else {
+          setStatus('error', 'Could not send your request. Please try again or email mentroid@mentroid.co.in directly.');
+        }
+      })
+      .finally(function () { setLoading(false); });
+  });
+
+  form.addEventListener('input', clearStatus);
+})();
+
+// ── Get Quote button ripple effect ──────────────────────────────
+document.querySelectorAll('.quote-trigger').forEach(function (btn) {
+  btn.addEventListener('click', function (e) {
+    // Remove any existing ripple
+    btn.querySelectorAll('.btn-ripple').forEach(function (r) { r.remove(); });
+
+    var rect = btn.getBoundingClientRect();
+    var size = Math.max(rect.width, rect.height);
+    var x = e.clientX - rect.left - size / 2;
+    var y = e.clientY - rect.top  - size / 2;
+
+    var ripple = document.createElement('span');
+    ripple.className = 'btn-ripple';
+    ripple.style.cssText = 'width:' + size + 'px;height:' + size + 'px;left:' + x + 'px;top:' + y + 'px;';
+    btn.appendChild(ripple);
+
+    ripple.addEventListener('animationend', function () { ripple.remove(); });
+  });
+});
