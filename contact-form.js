@@ -1,44 +1,104 @@
+/**
+ * Mentroid — Contact Form Handler
+ * Supports EmailJS (primary) and Web3Forms (fallback).
+ * Keys are set in emailjs-config.js.
+ */
 (function () {
   'use strict';
 
-  const form = document.getElementById('contact-form');
+  const form      = document.getElementById('contact-form');
   if (!form) return;
 
   const submitBtn = document.getElementById('contact-submit');
-  const statusEl = document.getElementById('contact-form-status');
-  const cfg = window.MENTROID_CONTACT || window.MENTROID_EMAILJS || {};
-  const emailjsCfg = cfg.emailjs || cfg;
-  const toEmail = (cfg.toEmail || 'mentroid@mentroid.co.in').toLowerCase();
+  const statusEl  = document.getElementById('contact-form-status');
 
-  function isPlaceholder(value) {
-    if (!value || typeof value !== 'string') return true;
-    const v = value.trim();
-    return !v || v.startsWith('YOUR_');
+  /* ── Shared helpers (also used by quote form via window.MentroidMail) ── */
+  function isBlank(val) {
+    return !val || typeof val !== 'string' || !val.trim() || val.trim().startsWith('YOUR_');
   }
 
-  function isEmailJsConfigured() {
-    return !isPlaceholder(emailjsCfg.publicKey) &&
-      !isPlaceholder(emailjsCfg.serviceId) &&
-      !isPlaceholder(emailjsCfg.adminTemplateId || emailjsCfg.templateId);
+  function getCfg() {
+    return window.MENTROID_CONTACT || window.MENTROID_EMAILJS || {};
   }
 
-  function hasConfirmationTemplate() {
-    return !isPlaceholder(emailjsCfg.confirmationTemplateId);
+  function ejsCfg() {
+    const c = getCfg();
+    return c.emailjs || c;
   }
 
-  function isWeb3FormsConfigured() {
-    const key = cfg.web3formsAccessKey;
-    return key && !isPlaceholder(key);
+  function isEmailJsReady() {
+    const e = ejsCfg();
+    return !isBlank(e.publicKey) && !isBlank(e.serviceId) &&
+           !isBlank(e.adminTemplateId || e.templateId);
   }
 
-  function isDeliveryConfigured() {
-    return isEmailJsConfigured() || isWeb3FormsConfigured();
+  function isWeb3Ready() {
+    return !isBlank(getCfg().web3formsAccessKey);
   }
 
-  function setStatus(type, message) {
+  function isReady() { return isEmailJsReady() || isWeb3Ready(); }
+
+  /* ── Send via EmailJS ── */
+  function sendEmailJs(params) {
+    if (typeof emailjs === 'undefined') {
+      return Promise.reject(new Error('EmailJS SDK not loaded. Please refresh the page.'));
+    }
+    const e   = ejsCfg();
+    const cfg = getCfg();
+    emailjs.init({ publicKey: e.publicKey });
+
+    const adminTpl = e.adminTemplateId || e.templateId;
+    const svcId    = e.serviceId;
+
+    // Send to admin
+    return emailjs.send(svcId, adminTpl, params).then(function () {
+      // Send confirmation to user if template is set
+      const confTpl = e.confirmationTemplateId;
+      if (!isBlank(confTpl)) {
+        return emailjs.send(svcId, confTpl, {
+          to_email:   params.from_email,
+          user_email: params.from_email,
+          from_name:  params.from_name,
+          subject:    'We received your message — Mentroid',
+          message:    'Hi ' + params.from_name + ', thanks for reaching out! We\'ll reply within 24 hours.',
+          reply_to:   cfg.toEmail || 'mentroid@mentroid.co.in',
+        });
+      }
+    });
+  }
+
+  /* ── Send via Web3Forms ── */
+  function sendWeb3(params) {
+    return fetch('https://api.web3forms.com/submit', {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify(Object.assign({
+        access_key: getCfg().web3formsAccessKey,
+        from_name:  'Mentroid Website',
+      }, params)),
+    }).then(function (res) {
+      return res.json().then(function (data) {
+        if (!res.ok || !data.success) throw new Error(data.message || 'Submission failed');
+        return data;
+      });
+    });
+  }
+
+  /* ── Unified send ── */
+  function send(params) {
+    if (isEmailJsReady()) return sendEmailJs(params);
+    if (isWeb3Ready())    return sendWeb3(params);
+    return Promise.reject(new Error('NOT_CONFIGURED'));
+  }
+
+  /* Expose helpers so the quote form can reuse them */
+  window.MentroidMail = { send: send, isReady: isReady, isBlank: isBlank };
+
+  /* ── UI helpers ── */
+  function setStatus(type, msg) {
     if (!statusEl) return;
     statusEl.hidden = false;
-    statusEl.textContent = message;
+    statusEl.textContent = msg;
     statusEl.className = 'form-status form-status--' + type;
   }
 
@@ -49,164 +109,72 @@
     statusEl.className = 'form-status';
   }
 
-  function setLoading(loading) {
+  function setLoading(on) {
     if (submitBtn) {
-      submitBtn.disabled = loading;
-      submitBtn.textContent = loading ? 'Sending…' : 'Send Message';
+      submitBtn.disabled = on;
+      submitBtn.textContent = on ? 'Sending…' : 'Send Message';
     }
     form.querySelectorAll('input:not([type="hidden"]), textarea').forEach(function (el) {
-      el.disabled = loading;
+      el.disabled = on;
     });
   }
 
-  function getValues() {
-    return {
-      name: form.from_name.value.trim(),
-      email: form.from_email.value.trim(),
-      subject: form.subject.value.trim(),
-      message: form.message.value.trim(),
-    };
-  }
-
+  /* ── Validation ── */
   function validate() {
-    const { name, email, subject, message } = getValues();
+    if (form._honey && form._honey.value) return false;
 
-    if (form._honey && form._honey.value) {
-      return false;
-    }
+    const name    = form.from_name.value.trim();
+    const email   = form.from_email.value.trim();
+    const subject = form.subject.value.trim();
+    const message = form.message.value.trim();
 
-    if (!name) {
-      setStatus('error', 'Please enter your name.');
-      form.from_name.focus();
-      return false;
-    }
+    if (!name)    { setStatus('error', 'Please enter your name.');              form.from_name.focus();    return false; }
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      setStatus('error', 'Please enter a valid email address.');
-      form.from_email.focus();
-      return false;
-    }
-    if (!subject) {
-      setStatus('error', 'Please enter a subject.');
-      form.subject.focus();
-      return false;
-    }
-    if (!message) {
-      setStatus('error', 'Please enter your message.');
-      form.message.focus();
-      return false;
-    }
+                    setStatus('error', 'Please enter a valid email address.');  form.from_email.focus();   return false; }
+    if (!subject) { setStatus('error', 'Please enter a subject.');              form.subject.focus();      return false; }
+    if (!message) { setStatus('error', 'Please enter your message.');           form.message.focus();      return false; }
     return true;
   }
 
-  function sendViaWeb3Forms() {
-    const { name, email, subject, message } = getValues();
-
-    return fetch('https://api.web3forms.com/submit', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
-      body: JSON.stringify({
-        access_key: cfg.web3formsAccessKey,
-        name: name,
-        email: email,
-        subject: 'Mentroid contact: ' + subject,
-        message: message,
-        from_name: 'Mentroid Website',
-        botcheck: form._honey ? form._honey.value : '',
-      }),
-    }).then(function (res) {
-      return res.json().then(function (data) {
-        if (!res.ok || !data.success) {
-          throw new Error(data.message || 'Could not send message');
-        }
-        return data;
-      });
-    });
-  }
-
-  function sendViaEmailJs() {
-    if (typeof emailjs === 'undefined') {
-      return Promise.reject(new Error('Email service failed to load. Please refresh the page.'));
-    }
-
-    const { name, email, subject, message } = getValues();
-    const serviceId = emailjsCfg.serviceId;
-    const adminTemplateId = emailjsCfg.adminTemplateId || emailjsCfg.templateId;
-
-    emailjs.init({ publicKey: emailjsCfg.publicKey });
-
-    return emailjs.sendForm(serviceId, adminTemplateId, form).then(function () {
-      if (!hasConfirmationTemplate()) return;
-      return emailjs.send(serviceId, emailjsCfg.confirmationTemplateId, {
-        to_email: toEmail,
-        user_email: email,
-        from_name: name,
-        from_email: email,
-        subject: subject,
-        message: message,
-        reply_to: toEmail,
-      });
-    });
-  }
-
-  function sendMessage() {
-    if (isEmailJsConfigured()) {
-      return sendViaEmailJs();
-    }
-    if (isWeb3FormsConfigured()) {
-      return sendViaWeb3Forms();
-    }
-    return Promise.reject(new Error('NOT_CONFIGURED'));
-  }
-
-  function setupErrorMessage(err) {
-    if (err && err.message === 'NOT_CONFIGURED') {
-      return 'Message delivery is not configured yet. Add your Web3Forms or EmailJS keys in emailjs-config.js.';
-    }
-    if (err && err.text) {
-      return 'Could not send your message: ' + err.text;
-    }
-    if (err && err.message) {
-      return 'Could not send your message. ' + err.message;
-    }
-    return 'Could not send your message. Please try again in a moment.';
-  }
-
+  /* ── Submit ── */
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     clearStatus();
-
     if (!validate()) return;
 
-    if (!isDeliveryConfigured()) {
-      setStatus('error', setupErrorMessage(new Error('NOT_CONFIGURED')));
+    if (!isReady()) {
+      setStatus('error', 'Email delivery is not configured yet. Add your EmailJS or Web3Forms keys in emailjs-config.js.');
       return;
     }
 
+    const params = {
+      to_email:    getCfg().toEmail || 'mentroid@mentroid.co.in',
+      from_name:   form.from_name.value.trim(),
+      from_email:  form.from_email.value.trim(),
+      subject:     'Mentroid Contact: ' + form.subject.value.trim(),
+      message:     form.message.value.trim(),
+      reply_to:    form.from_email.value.trim(),
+      // Web3Forms fields
+      name:        form.from_name.value.trim(),
+      email:       form.from_email.value.trim(),
+    };
+
     setLoading(true);
 
-    sendMessage()
+    send(params)
       .then(function () {
-        var msg = 'Thank you! Your message was sent to Mentroid.';
-        if (isEmailJsConfigured() && hasConfirmationTemplate()) {
-          msg += ' A confirmation email has been sent to your inbox.';
-        } else if (isWeb3FormsConfigured()) {
-          msg += ' A confirmation email has been sent to your inbox.';
-        } else {
-          msg += ' We will get back to you soon.';
-        }
-        setStatus('success', msg);
+        setStatus('success', '✅ Message sent! We\'ll get back to you soon.');
         form.reset();
       })
       .catch(function (err) {
-        console.error('Contact form error:', err);
-        setStatus('error', setupErrorMessage(err));
+        console.error('[Contact form]', err);
+        if (err && err.message === 'NOT_CONFIGURED') {
+          setStatus('error', 'Email delivery is not configured. Please add your keys in emailjs-config.js.');
+        } else {
+          setStatus('error', 'Could not send your message. Please try again or email mentroid@mentroid.co.in directly.');
+        }
       })
-      .finally(function () {
-        setLoading(false);
-      });
+      .finally(function () { setLoading(false); });
   });
 
   form.addEventListener('input', clearStatus);
