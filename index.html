@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Mentroid - Professional AI Chatbot & ML Training Services</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+
+  <canvas id="bgCanvas" aria-hidden="true"></canvas>
+
+  <div class="orb orb-cyan" style="width:500px;height:500px;top:45%;left:60%;transform:translate(-50%,-50%);"></div>
+
+  <!-- ══ NAVBAR ══ -->
+  <nav>
+    <a href="#hero" class="nav-logo" aria-label="Mentroid — Home">
+      <span class="nav-logo-scene">
+        <span class="nav-logo-tilt">
+          <span class="nav-logo-glow" aria-hidden="true"></span>
+          <span class="nav-logo-shine" aria-hidden="true"></span>
+          <span class="nav-logo-inner">
+            <video
+              class="nav-logo-video"
+              src="assets/Mentroid-LOGO.webm"
+              type="video/webm"
+              width="52"
+              height="52"
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="auto"
+              aria-hidden="true"
+            ></video>
+          </span>
+        </span>
+      </span>
+    </a>
+
+    <div class="nav-links">
+      <a href="#hero">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#projects">Projects</a>
+      <a href="#why-us">Why Us</a>
+      <a href="#tech">Tech</a>
+      <a href="#process">Process</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#team">Team</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact" class="nav-cta">Contact</a>
+    </div>
+
+    <div class="nav-right">
+      <a href="#contact" class="nav-join">Join Us</a>
+      <button class="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile nav drawer -->
+  <div class="nav-drawer">
+    <a href="#hero">Home</a>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#projects">Projects</a>
+    <a href="#why-us">Why Us</a>
+    <a href="#tech">Tech</a>
+    <a href="#process">Process</a>
+    <a href="#testimonials">Reviews</a>
+    <a href="#team">Team</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact" class="nav-cta">Contact</a>
+    <a href="#contact" class="nav-join nav-join--drawer">Join Us</a>
+  </div>
+
+  <!-- ══ HERO ══ -->
+  <section id="hero">
+    <!-- 3D: floating cubes -->
+    <div class="cube-3d" style="top:15%;left:8%;animation-duration:16s;">
+      <div class="face front"></div><div class="face back"></div>
+      <div class="face left"></div><div class="face right"></div>
+      <div class="face top"></div><div class="face bottom"></div>
+    </div>
+    <div class="cube-3d" style="top:70%;right:10%;width:24px;height:24px;animation-duration:11s;animation-delay:-4s;">
+      <div class="face front"></div><div class="face back"></div>
+      <div class="face left"></div><div class="face right"></div>
+      <div class="face top"></div><div class="face bottom"></div>
+    </div>
+    <!-- 3D: particle orbs -->
+    <div class="particle-orb" style="width:120px;height:120px;top:20%;right:15%;background:radial-gradient(circle,rgba(124,58,237,0.18),transparent 70%);animation-duration:12s;"></div>
+    <div class="particle-orb" style="width:80px;height:80px;bottom:25%;left:12%;background:radial-gradient(circle,rgba(96,165,250,0.18),transparent 70%);animation-duration:9s;animation-delay:-3s;"></div>
+    <div class="hero-inner">
+      <div class="hero-logo-bg" aria-hidden="true">
+        <div class="hero-logo-stack">
+          <img src="assets/mentroid-hero-logo.png" alt="" class="hero-logo-img" width="480" height="480" decoding="async">
+          <img src="assets/mentroid-hero-logo.png" alt="" class="hero-logo-bloom" width="480" height="480" decoding="async" aria-hidden="true">
+          <span class="hero-logo-glow hero-logo-glow--lines" aria-hidden="true"></span>
+          <span class="hero-logo-glow hero-logo-glow--cyan" aria-hidden="true"></span>
+          <span class="hero-logo-glow hero-logo-glow--orange" aria-hidden="true"></span>
+        </div>
+      </div>
+      <div class="hero-badge">
+        <span></span> Now serving businesses across India
+      </div>
+      <h1>How <span class="grad-text">Mentroid</span> is solving professional AI and ML problems</h1>
+      <p>Empowering businesses and individuals with intelligent chatbot development, advanced ML training, and strategic
+        AI career guidance — turning innovation into impact.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-primary">Get Your Custom AI Solution</a>
+        <a href="#services" class="btn-outline">Explore Services</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ ABOUT ══ -->
+  <section id="about" class="section">
+    <!-- 3D: floating triangle -->
+    <div class="tri-3d" style="top:20%;left:5%;border-left:18px solid transparent;border-right:18px solid transparent;border-bottom:30px solid rgba(167,139,250,0.25);animation-delay:-2s;"></div>
+    <div class="tri-3d" style="bottom:15%;right:8%;border-left:12px solid transparent;border-right:12px solid transparent;border-bottom:20px solid rgba(96,165,250,0.2);animation-duration:13s;animation-delay:-5s;"></div>
+    <div class="container">
+      <h2 class="section-title">About Mentroid</h2>
+      <p class="section-sub">
+        Mentroid is a next-generation AI solutions company focused on building intelligent systems that solve real-world
+        problems.
+      </p>
+
+      <div class="process-steps">
+        <div class="step-card">
+          <div class="step-num">🎯</div>
+          <h3>Our Mission</h3>
+          <p>To make AI accessible, practical, and impactful for businesses and individuals.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">🚀</div>
+          <h3>Our Vision</h3>
+          <p>To become a leading AI innovation hub powering startups and enterprises.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">💡</div>
+          <h3>What We Do</h3>
+          <p>We design AI systems, build ML models, and deliver real-world automation solutions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+     <!-- ══ SERVICES ══ -->
+   <section id="services" class="section">
+     <!-- 3D: spinning cube -->
+     <div class="cube-3d" style="top:8%;right:4%;width:32px;height:32px;animation-duration:18s;">
+      <div class="face front"></div><div class="face back"></div>
+      <div class="face left"></div><div class="face right"></div>
+      <div class="face top"></div><div class="face bottom"></div>
+    </div>
+    <div class="particle-orb" style="width:200px;height:200px;bottom:-60px;left:-60px;background:radial-gradient(circle,rgba(124,58,237,0.12),transparent 70%);animation-duration:18s;"></div>
+    <div class="container">
+      <h2 class="section-title">What We Build</h2>
+      <p class="section-sub">End-to-end AI, ML, and digital solutions — from intelligent automation to full-scale
+        product development.</p>
+
+      <div class="pricing-grid">
+
+        <!-- 1. AI Starter Pack -->
+        <div class="price-card">
+          <div class="price-badge">🚀 Starter</div>
+          <h3>AI Starter Pack</h3>
+          <p class="price-target">Small businesses, freelancers, coaches</p>
+          <p class="price-goal">🎯 Quick AI adoption</p>
+          <ul class="price-features">
+            <li>Basic AI Chatbot (Website / WhatsApp)</li>
+            <li>FAQ Automation</li>
+            <li>Lead Capture System</li>
+            <li>Basic Dashboard</li>
+            <li>7 Days Support</li>
+          </ul>
+          <div class="price-best">
+            <span class="best-label">⚡ Best For</span>
+            <span>Local businesses · Coaches / Creators · Small startups</span>
+          </div>
+          <div class="price-range">
+            <span class="price-usd grad-text">$180 – $360</span>
+            <span class="price-divider">/</span>
+            <span class="price-inr">₹14,999 - ₹29,999</span>
+          </div>
+          <a href="services/ai-starter-pack.html" class="price-btn fill">Get Quote</a>
+        </div>
+
+        <!-- 2. Growth Automation Pack -->
+        <div class="price-card featured">
+          <div class="price-badge popular">🔥 Most Popular</div>
+          <h3>Growth Automation Pack</h3>
+          <p class="price-target">Startups, agencies, growing businesses</p>
+          <p class="price-goal">🎯 Automate business operations</p>
+          <ul class="price-features">
+            <li>Advanced AI Chatbot (GPT-powered)</li>
+            <li>WhatsApp + CRM Integration</li>
+            <li>Lead Qualification Automation</li>
+            <li>Email / SMS Automation</li>
+            <li>Workflow Automation (Zapier / APIs)</li>
+            <li>Analytics Dashboard</li>
+            <li>30 Days Support</li>
+          </ul>
+          <div class="price-bonus">
+            <span class="bonus-label">🔥 Bonus</span>
+            <span>AI Funnel Setup · Conversion Optimization</span>
+          </div>
+          <div class="price-range">
+            <span class="price-usd grad-text">$480 – $960</span>
+            <span class="price-divider">/</span>
+            <span class="price-inr">₹39,999 - ₹79,999</span>
+          </div>
+         <a href="services/growth-automation-pack.html" class="price-btn fill">Get Quote</a>
+        </div>
+
+        <!-- 3. Business Automation Pack -->
+        <div class="price-card">
+          <div class="price-badge">⚙️ Automation</div>
+          <h3>Business Automation Pack</h3>
+          <p class="price-target">SMEs and companies wanting end-to-end automation</p>
+          <p class="price-goal">🎯 Complete business automation</p>
+          <ul class="price-features">
+            <li>AI Chatbots (Custom to your service)</li>
+            <li>WhatsApp Automation</li>
+            <li>CRM Integration</li>
+            <li>Email Automation</li>
+            <li>Lead Generation System</li>
+            <li>Workflow Automation</li>
+          </ul>
+          <div class="price-range">
+            <span class="price-isd grad-text">$960 – $1,800</span>
+            <span class="price-divider">/</span>
+            <span class="price-inr">₹79,999 – ₹1,49,999</span>
+          </div>
+           <a href="services/business-automation-pack.html" class="price-btn fill">Get Quote</a>
+        </div>
+
+        <!-- 4. AI SaaS Development (Premium) -->
+        <div class="price-card">
+          <div class="price-badge premium">💎 Premium</div>
+          <h3>AI SaaS Development (Premium)</h3>
+          <p class="price-target">AI startups, enterprise SaaS, custom AI platforms</p>
+          <p class="price-goal">🎯 Build AI-based products</p>
+          <ul class="price-features">
+            <li>SaaS Product Development (Web App)</li>
+            <li>AI Model Integration (LLM / ML / CV)</li>
+            <li>User Authentication System</li>
+            <li>Payment Integration (Razorpay / Stripe)</li>
+            <li>Scalable Backend (Flask / Node / C++)</li>
+            <li>UI/UX Design (Modern SaaS)</li>
+            <li>Deployment (AWS / Vercel)</li>
+          </ul>
+          <div class="price-bonus">
+            <span class="bonus-label">🔥 Bonus</span>
+            <span>MVP Strategy · Go-To-Market Plan</span>
+          </div>
+          <div class="price-range">
+            <span class="price-usd grad-text">$2,400 – $9,600+</span>
+            <span class="price-divider">/</span>
+            <span class="price-inr">₹1,99,999 – ₹7,99,999+</span>
+          </div>
+         <a href="services/ai-saas-development.html" class="price-btn fill">Get Quote</a>       
+         </div>
+
+      </div>
+
+    </div>
+  </section> 
+
+  <!-- ══ PROJECTS ══ -->
+  <section id="projects" class="section projects-section">
+    <!-- 3D: orbs -->
+    <div class="particle-orb projects-parallax-bg" data-projects-parallax="0.45" style="width:160px;height:160px;top:-40px;right:-40px;background:radial-gradient(circle,rgba(96,165,250,0.14),transparent 70%);animation-duration:14s;animation-delay:-6s;"></div>
+    <div class="tri-3d projects-parallax-bg" data-projects-parallax="0.3" style="bottom:10%;left:6%;border-left:22px solid transparent;border-right:22px solid transparent;border-bottom:36px solid rgba(124,58,237,0.2);animation-duration:11s;"></div>
+    <div class="container projects-container">
+      <div class="projects-header" data-projects-parallax="0.35">
+        <h2 class="section-title">Our Projects</h2>
+        <p class="section-sub">
+          Real-world AI, ML, and development solutions we've built for clients and innovators.
+        </p>
+      </div>
+
+      <div class="projects-slider-wrap" data-projects-parallax="0.2">
+        <div class="projects-slider" aria-label="Projects showcase">
+          <div class="projects-track">
+            <article class="svc-card project-card" data-parallax-speed="0.12">
+              <div class="svc-icon">🎓</div>
+              <h3>LearnSphere</h3>
+              <p>Static educational web platform designed to make science and maths education accessible for every student.</p>
+              <ul class="svc-features">
+                <li>Interactive 2D/3D simulations</li>
+                <li>Quizzes & progress tracking</li>
+                <li>Gemini-powered AI Tutor chatbot</li>
+              </ul>
+              <a href="#contact" class="svc-cta">View Details →</a>
+            </article>
+            <article class="svc-card project-card" data-parallax-speed="0.18">
+              <div class="svc-icon">🌱</div>
+              <h3>AgriTech</h3>
+              <p>AI-powered smart agriculture platform designed to enable sustainable and data-driven farming practices.</p>
+              <ul class="svc-features">
+                <li>Crop yield & recommendation model</li>
+                <li>Plant disease detection</li>
+                <li>Stakeholder collaboration ecosystem</li>
+              </ul>
+              <a href="#contact" class="svc-cta">View Details →</a>
+            </article>
+            <article class="svc-card project-card" data-parallax-speed="0.14">
+              <div class="svc-icon">❤️</div>
+              <h3>ECGenius</h3>
+              <p>Deep learning web application using PyTorch & Flask to analyze ECG signals and detect cardiac arrhythmias.</p>
+              <ul class="svc-features">
+                <li>Arrhythmia detection and classification</li>
+                <li>Raw ECG signal processing</li>
+                <li>Clinician & researcher UI portal</li>
+              </ul>
+              <a href="#contact" class="svc-cta">View Details →</a>
+            </article>
+            <article class="svc-card project-card" data-parallax-speed="0.2">
+              <div class="svc-icon">👓</div>
+              <h3>VisionSTRA</h3>
+              <p>Privacy-first road safety AI assistant helping visually impaired users navigate streets independently.</p>
+              <ul class="svc-features">
+                <li>Real-time vehicle/pedestrian detection</li>
+                <li>Local browser camera processing</li>
+                <li>WCAG-aligned UI & vibration alerts</li>
+              </ul>
+              <a href="#contact" class="svc-cta">View Details →</a>
+            </article>
+            <article class="svc-card project-card" data-parallax-speed="0.12" aria-hidden="true">
+              <div class="svc-icon">🎓</div>
+              <h3>LearnSphere</h3>
+              <p>Static educational web platform designed to make science and maths education accessible for every student.</p>
+              <ul class="svc-features">
+                <li>Interactive 2D/3D simulations</li>
+                <li>Quizzes & progress tracking</li>
+                <li>Gemini-powered AI Tutor chatbot</li>
+              </ul>
+              <a href="#contact" class="svc-cta" tabindex="-1">View Details →</a>
+            </article>
+            <article class="svc-card project-card" data-parallax-speed="0.18" aria-hidden="true">
+              <div class="svc-icon">🌱</div>
+              <h3>AgriTech</h3>
+              <p>AI-powered smart agriculture platform designed to enable sustainable and data-driven farming practices.</p>
+              <ul class="svc-features">
+                <li>Crop yield & recommendation model</li>
+                <li>Plant disease detection</li>
+                <li>Stakeholder collaboration ecosystem</li>
+              </ul>
+              <a href="#contact" class="svc-cta" tabindex="-1">View Details →</a>
+            </article>
+            <article class="svc-card project-card" data-parallax-speed="0.14" aria-hidden="true">
+              <div class="svc-icon">❤️</div>
+              <h3>ECGenius</h3>
+              <p>Deep learning web application using PyTorch & Flask to analyze ECG signals and detect cardiac arrhythmias.</p>
+              <ul class="svc-features">
+                <li>Arrhythmia detection and classification</li>
+                <li>Raw ECG signal processing</li>
+                <li>Clinician & researcher UI portal</li>
+              </ul>
+              <a href="#contact" class="svc-cta" tabindex="-1">View Details →</a>
+            </article>
+            <article class="svc-card project-card" data-parallax-speed="0.2" aria-hidden="true">
+              <div class="svc-icon">👓</div>
+              <h3>VisionSTRA</h3>
+              <p>Privacy-first road safety AI assistant helping visually impaired users navigate streets independently.</p>
+              <ul class="svc-features">
+                <li>Real-time vehicle/pedestrian detection</li>
+                <li>Local browser camera processing</li>
+                <li>WCAG-aligned UI & vibration alerts</li>
+              </ul>
+              <a href="#contact" class="svc-cta" tabindex="-1">View Details →</a>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ WHY CHOOSE US ══ -->
+  <section id="why-us" class="section" style="background: var(--bg2);">
+    <!-- 3D: cubes -->
+    <div class="cube-3d" style="bottom:12%;left:5%;animation-duration:20s;animation-delay:-7s;">
+      <div class="face front"></div><div class="face back"></div>
+      <div class="face left"></div><div class="face right"></div>
+      <div class="face top"></div><div class="face bottom"></div>
+    </div>
+    <div class="cube-3d" style="top:10%;right:6%;width:28px;height:28px;animation-duration:13s;animation-delay:-2s;">
+      <div class="face front"></div><div class="face back"></div>
+      <div class="face left"></div><div class="face right"></div>
+      <div class="face top"></div><div class="face bottom"></div>
+    </div>
+    <div class="container">
+      <h2 class="section-title">Why Choose Mentroid?</h2>
+      <p class="section-sub">
+        We don't just build projects — we build impactful AI solutions that deliver results.
+      </p>
+
+      <div class="process-steps">
+
+        <div class="step-card">
+          <div class="step-num">🚀</div>
+          <h3>Startup Speed</h3>
+          <p>Fast execution and rapid delivery without compromising quality.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">🧠</div>
+          <h3>AI Expertise</h3>
+          <p>Strong foundation in Machine Learning, Deep Learning, and GenAI.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">🎯</div>
+          <h3>Custom Solutions</h3>
+          <p>No templates — everything is tailored to your business needs.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">🤝</div>
+          <h3>Client Focused</h3>
+          <p>We work closely with clients to ensure success and satisfaction.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">📈</div>
+          <h3>Scalable Systems</h3>
+          <p>Solutions built to grow with your business and future needs.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">💡</div>
+          <h3>Innovation Driven</h3>
+          <p>We bring cutting-edge ideas and AI innovations into every project.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ TECH ══ -->
+  <section id="tech" class="section">
+    <!-- 3D: particle orbs (tech nodes) -->
+    <div class="particle-orb" style="width:180px;height:180px;top:-50px;left:50%;margin-left:-90px;background:radial-gradient(circle,rgba(6,182,212,0.15),transparent 70%);animation-duration:16s;"></div>
+    <div class="tri-3d" style="top:15%;right:5%;border-left:16px solid transparent;border-right:16px solid transparent;border-bottom:26px solid rgba(6,182,212,0.22);animation-duration:9s;animation-delay:-3s;"></div>
+    <div class="tri-3d" style="bottom:12%;left:4%;border-left:20px solid transparent;border-right:20px solid transparent;border-bottom:32px solid rgba(167,139,250,0.18);animation-duration:14s;animation-delay:-8s;"></div>
+    <div class="container">
+      <h2 class="section-title">Technologies We Use</h2>
+      <p class="section-sub">
+        We use modern, scalable, and industry-proven technologies.
+      </p>
+
+      <div class="svc-grid">
+
+        <div class="svc-card">
+          <h3>AI / ML</h3>
+          <p>TensorFlow, PyTorch, OpenAI, Scikit-learn</p>
+        </div>
+
+        <div class="svc-card">
+          <h3>Frontend</h3>
+          <p>React.js, HTML, CSS, Tailwind</p>
+        </div>
+
+        <div class="svc-card">
+          <h3>Backend</h3>
+          <p>Flask, Node.js, Express</p>
+        </div>
+
+        <div class="svc-card">
+          <h3>Database</h3>
+          <p>MongoDB, Firebase, MySQL</p>
+        </div>
+
+        <div class="svc-card">
+          <h3>Cloud</h3>
+          <p>AWS, Vercel, Netlify</p>
+        </div>
+
+        <div class="svc-card">
+          <h3>Tools</h3>
+          <p>Git, Docker, Postman, Figma</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ PROCESS ══ -->
+  <section id="process" class="section">
+    <!-- 3D: spinning cube -->
+    <div class="cube-3d" style="top:50%;right:3%;margin-top:-20px;animation-duration:15s;animation-delay:-5s;">
+      <div class="face front"></div><div class="face back"></div>
+      <div class="face left"></div><div class="face right"></div>
+      <div class="face top"></div><div class="face bottom"></div>
+    </div>
+    <div class="particle-orb" style="width:140px;height:140px;bottom:-30px;left:10%;background:radial-gradient(circle,rgba(124,58,237,0.12),transparent 70%);animation-duration:11s;animation-delay:-4s;"></div>
+    <div class="container">
+      <h2 class="section-title">How It Works</h2>
+      <p class="section-sub">A simple, transparent process from first conversation to final delivery.</p>
+      <div class="process-steps">
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <h3>Discovery Call</h3>
+          <p>We discuss your needs, goals, and requirements in detail</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <h3>Custom Proposal</h3>
+          <p>We create a tailored solution plan with timeline and pricing</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">3</div>
+          <h3>Development / Training</h3>
+          <p>We work together to build your solution or achieve your learning goals</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">4</div>
+          <h3>Delivery & Support</h3>
+          <p>You get your final deliverables plus ongoing support</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══ TESTIMONIALS ══ -->
+  <section id="testimonials" class="section">
+    <!-- 3D: floating triangles -->
+    <div class="tri-3d" style="top:10%;left:3%;border-left:14px solid transparent;border-right:14px solid transparent;border-bottom:24px solid rgba(167,139,250,0.22);animation-duration:10s;"></div>
+    <div class="tri-3d" style="bottom:8%;right:4%;border-left:18px solid transparent;border-right:18px solid transparent;border-bottom:30px solid rgba(96,165,250,0.18);animation-duration:13s;animation-delay:-6s;"></div>
+    <div class="particle-orb" style="width:120px;height:120px;top:30%;right:2%;background:radial-gradient(circle,rgba(167,139,250,0.14),transparent 70%);animation-duration:10s;animation-delay:-2s;"></div>
+    <div class="container">
+      <h2 class="section-title">Success Stories</h2>
+      <p class="section-sub">Real results from real clients across India</p>
+      <div class="testimonials-grid">
+
+        <div class="review-card">
+          <div class="review-stars">⭐⭐⭐⭐⭐</div>
+          <p class="review-text">"Amazing people and amazing services."</p>
+          <p class="review-author">Priyaranjan Jha</p>
+          <p class="review-meta">Client · Chatbot Development</p>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">⭐⭐⭐⭐⭐</div>
+          <p class="review-text">"Excellent experience! The video was professional, and their service was top-notch."
+          </p>
+          <p class="review-author">Shivam Jha</p>
+          <p class="review-meta">Surveyor · Photo/Video Editing</p>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">⭐⭐⭐⭐⭐</div>
+          <p class="review-text">"Awesome experience."</p>
+          <p class="review-author">Aditi</p>
+          <p class="review-meta">Student · AI/ML & GenAI Projects</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ TEAM ══ -->
+  <section id="team" class="section">
+    <!-- 3D: cubes -->
+    <div class="cube-3d" style="top:8%;left:2%;width:28px;height:28px;animation-duration:17s;animation-delay:-3s;">
+      <div class="face front"></div><div class="face back"></div>
+      <div class="face left"></div><div class="face right"></div>
+      <div class="face top"></div><div class="face bottom"></div>
+    </div>
+    <div class="cube-3d" style="bottom:15%;right:3%;animation-duration:22s;animation-delay:-9s;">
+      <div class="face front"></div><div class="face back"></div>
+      <div class="face left"></div><div class="face right"></div>
+      <div class="face top"></div><div class="face bottom"></div>
+    </div>
+    <div class="particle-orb" style="width:200px;height:200px;top:40%;left:-60px;background:radial-gradient(circle,rgba(124,58,237,0.10),transparent 70%);animation-duration:20s;animation-delay:-5s;"></div>
+    <div class="container">
+      <h2 class="section-title">Meet the Team</h2>
+      <p class="section-sub">
+        A cross-functional startup team united by one mission — making AI accessible and impactful.
+      </p>
+
+      <!-- Leadership -->
+      <p class="cat-label">👑 Leadership</p>
+      <div class="team-row">
+
+        <div class="member-card leader">
+          <div class="avatar-wrap">
+            <img src="https://www.mentroid.co.in/Images/om1.jpg">
+            <span class="avatar-badge">🚀</span>
+          </div>
+          <p class="member-name">Om Roy</p>
+          <p class="member-role">Founder & CEO</p>
+          <div class="member-links">
+            <a href="https://www.linkedin.com/in/om-roy-3b809628a/" target="_blank">LinkedIn</a>
+            <a href="https://portfolio-eiv7.vercel.app/" target="_blank" class="portfolio">Portfolio</a>
+          </div>
+        </div>
+
+        <div class="member-card leader">
+          <div class="avatar-wrap">
+            <img src="https://www.mentroid.co.in/Images/shubhangi.jpg">
+            <span class="avatar-badge">⚙️</span>
+          </div>
+          <p class="member-name">Shubhangi Roy</p>
+          <p class="member-role">Co-Founder & Head of Technology</p>
+          <div class="member-links">
+            <a href="https://www.linkedin.com/in/shubhangi-roy-762a3427a/" target="_blank">LinkedIn</a>
+            <a href="#" class="portfolio">Portfolio</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- AI & ML -->
+      <p class="cat-label">🤖 AI & ML</p>
+      <div class="team-row">
+
+        <div class="member-card">
+          <div class="avatar-wrap">
+            <img src="https://www.mentroid.co.in/Images/Aditya.jpg">
+            <span class="avatar-badge">🧠</span>
+          </div>
+          <p class="member-name">Aditya Gupta</p>
+          <p class="member-role">Machine Learning Lead</p>
+          <div class="member-links">
+            <a href="https://www.linkedin.com/in/aditya-gupta-b06418365" target="_blank">LinkedIn</a>
+            <a href="https://portfolio-rose-ten-26.vercel.app/" class="portfolio">Portfolio</a>
+          </div>
+        </div>
+
+        <div class="member-card">
+          <div class="avatar-wrap">
+            <img src="https://www.mentroid.co.in/Images/anshika.jpg">
+            <span class="avatar-badge">🤖</span>
+          </div>
+          <p class="member-name">Anshika Singh</p>
+          <p class="member-role">AI Systems Lead</p>
+          <div class="member-links">
+            <a href="https://www.linkedin.com/in/anshika-singh093" target="_blank">LinkedIn</a>
+            <a href="#" class="portfolio">Portfolio</a>
+          </div>
+        </div>
+
+        <div class="member-card">
+          <div class="avatar-wrap">
+            <img src="https://www.mentroid.co.in/Images/aayush.jpg">
+            <span class="avatar-badge">⚡</span>
+          </div>
+          <p class="member-name">Aayush Sinha</p>
+          <p class="member-role">AI Engineer</p>
+          <div class="member-links">
+            <a href="https://www.linkedin.com/in/aayush-sinha-481345230" target="_blank">LinkedIn</a>
+            <a href="https://aayush-sinha.vercel.app/" class="portfolio">Portfolio</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Engineering -->
+      <p class="cat-label">💻 Engineering</p>
+      <div class="team-row">
+
+        <div class="member-card">
+          <div class="avatar-wrap">
+            <img src="https://www.mentroid.co.in/Images/harsh.jpg">
+            <span class="avatar-badge">🔌</span>
+          </div>
+          <p class="member-name">Harsh Gupta</p>
+          <p class="member-role">IoT & Embedded Lead</p>
+          <div class="member-links">
+            <a href="https://www.linkedin.com/in/harsh-gupta-b7a282278" target="_blank">LinkedIn</a>
+            <a href="#" class="portfolio">Portfolio</a>
+          </div>
+        </div>
+
+        <div class="member-card">
+          <div class="avatar-wrap">
+            <img src="https://www.mentroid.co.in/Images/sachin.jpg">
+            <span class="avatar-badge">🖥️</span>
+          </div>
+          <p class="member-name">Sachin Pathak</p>
+          <p class="member-role">Full Stack Developer</p>
+          <div class="member-links">
+            <a href="https://www.linkedin.com/in/sachin-pathak-b52b20215/" target="_blank">LinkedIn</a>
+            <a href="#" class="portfolio">Portfolio</a>
+          </div>
+        </div>
+
+        <div class="member-card">
+          <div class="avatar-wrap">
+            <img src="https://www.mentroid.co.in/Images/sneha.jpg">
+            <span class="avatar-badge">🌐</span>
+          </div>
+          <p class="member-name">Sneha Talawar</p>
+          <p class="member-role">Web Developer</p>
+          <div class="member-links">
+            <a href="https://www.linkedin.com/in/sneha-talawar98" target="_blank">LinkedIn</a>
+            <a href="#" class="portfolio">Portfolio</a>
+          </div>
+        </div>
+
+        <div class="member-card">
+          <div class="avatar-wrap">
+            <img src="https://developerashuportfolio.vercel.app/Images/Ashu_Profile.jpeg">
+            <span class="avatar-badge">🌐</span>
+          </div>
+          <p class="member-name">Ashutosh Yadav</p>
+          <p class="member-role">Web Development Lead</p>
+          <div class="member-links">
+            <a href="https://www.linkedin.com/in/ashutosh-yadav-developer2809" target="_blank">LinkedIn</a>
+            <a href="https://developerashuportfolio.vercel.app/" class="portfolio">Portfolio</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Design & Ops -->
+      <p class="cat-label">🎨 Design & Ops</p>
+      <div class="team-row">
+
+        <div class="member-card">
+          <div class="avatar-wrap">
+            <img src="https://www.mentroid.co.in/Images/harshit.jpg">
+            <span class="avatar-badge">📹</span>
+          </div>
+          <p class="member-name">Harshit Jaiswal</p>
+          <p class="member-role">Content & Media</p>
+          <div class="member-links">
+            <a href="http://www.linkedin.com/in/harshit-jaiswal-882662215" target="_blank">LinkedIn</a>
+            <a href="#" class="portfolio">Portfolio</a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+  <!-- Stats -->
+  <div class="team-stats">
+    <div class="stat">
+      <div class="stat-num">12+</div>
+      <div class="stat-label">Team Members</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">4</div>
+      <div class="stat-label">Departments</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">8</div>
+      <div class="stat-label">Services</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Passion-Driven</div>
+    </div>
+  </div>
+
+  </div>
+  </section>
+
+  <!-- ══ FAQ ══ -->
+  <section id="faq" class="section" style="background: var(--bg2);">
+    <!-- 3D: dot grid + triangles -->
+    <div class="tri-3d" style="top:12%;right:5%;border-left:20px solid transparent;border-right:20px solid transparent;border-bottom:34px solid rgba(124,58,237,0.18);animation-duration:12s;animation-delay:-4s;"></div>
+    <div class="particle-orb" style="width:150px;height:150px;bottom:-40px;right:10%;background:radial-gradient(circle,rgba(96,165,250,0.12),transparent 70%);animation-duration:13s;animation-delay:-6s;"></div>
+    <div class="container">
+      <h2 class="section-title">Frequently Asked Questions</h2>
+
+      <div class="process-steps">
+
+        <div class="step-card">
+          <h3>What services do you provide?</h3>
+          <p>We provide AI chatbot development, ML models, web/app development, and consulting.</p>
+        </div>
+
+        <div class="step-card">
+          <h3>Do you work with startups?</h3>
+          <p>Yes, we specialize in helping startups build scalable AI solutions.</p>
+        </div>
+
+        <div class="step-card">
+          <h3>How long does a project take?</h3>
+          <p>It depends on complexity — typically 1 week to 1 month.</p>
+        </div>
+
+        <div class="step-card">
+          <h3>Do you provide support?</h3>
+          <p>Yes, we offer post-delivery support and maintenance.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CONTACT ══ -->
+  <section id="contact" class="section">
+    <!-- 3D: orb + cube -->
+    <div class="particle-orb" style="width:180px;height:180px;top:-50px;left:-50px;background:radial-gradient(circle,rgba(124,58,237,0.14),transparent 70%);animation-duration:16s;"></div>
+    <div class="cube-3d" style="bottom:10%;right:5%;width:36px;height:36px;animation-duration:19s;animation-delay:-8s;">
+      <div class="face front"></div><div class="face back"></div>
+      <div class="face left"></div><div class="face right"></div>
+      <div class="face top"></div><div class="face bottom"></div>
+    </div>
+    <div class="container">
+      <h2 class="section-title">Get in Touch</h2>
+      <p class="section-sub">Have questions, project ideas, or feedback? We'd love to hear from you.</p>
+      <form id="contact-form" class="contact-inner" novalidate>
+        <h3>Send a Message</h3>
+        <input type="hidden" name="to_email" value="mentroid@mentroid.co.in" />
+        <input type="text" name="_honey" class="form-honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <div class="form-group">
+          <label for="contact-name">Your Name</label>
+          <input type="text" id="contact-name" name="from_name" placeholder="John Doe" autocomplete="name" required />
+        </div>
+        <div class="form-group">
+          <label for="contact-email">Email Address</label>
+          <input type="email" id="contact-email" name="from_email" placeholder="john@example.com" autocomplete="email" required />
+        </div>
+        <div class="form-group">
+          <label for="contact-subject">Subject</label>
+          <input type="text" id="contact-subject" name="subject" placeholder="What's this about?" required />
+        </div>
+        <div class="form-group">
+          <label for="contact-message">Message</label>
+          <textarea id="contact-message" name="message" placeholder="Tell us about your project or question..." required></textarea>
+        </div>
+        <button type="submit" class="form-submit" id="contact-submit">Send Message</button>
+        <p id="contact-form-status" class="form-status" role="status" aria-live="polite" hidden></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ══ -->
+  <!-- ================= FOOTER ================= -->
+<footer class="footer">
+
+    <div class="footer-top">
+
+        <!-- Brand -->
+        <div class="footer-brand">
+
+            <h2 class="footer-logo grad-text">Mentroid</h2>
+
+            <p>
+                Mentroid empowers businesses and professionals with innovative
+                AI, Machine Learning, and Generative AI solutions that drive
+                automation, innovation, and digital transformation.
+            </p>
+
+            <div class="social-links">
+
+          <a href="https://www.linkedin.com/company/mentroid1/" target="_blank">
+              <i class="fab fa-linkedin-in"></i>
+          </a>
+
+          <a href="https://www.youtube.com/@MENTROID" target="_blank">
+              <i class="fab fa-youtube"></i>
+          </a>
+
+          <a href="https://www.instagram.com/mentroid_sol/" target="_blank">
+              <i class="fab fa-instagram"></i>
+          </a>
+
+          <a href="https://x.com/mentroid29" target="_blank">
+              <i class="fab fa-x-twitter"></i>
+          </a>
+
+          <a href="https://www.facebook.com/profile.php?id=61581668020163" target="_blank">
+              <i class="fab fa-facebook-f"></i>
+          </a>
+
+          </div>
+        </div>
+
+        <!-- Services -->
+        <div class="footer-column">
+
+            <h3>Services</h3>
+
+            <ul>
+
+                <li><a href="services/ai-starter-pack.html">AI Starter Pack</a></li>
+
+                <li><a href="services/growth-automation-pack.html">Growth Automation Pack</a></li>
+
+                <li><a href="services/ai-business-transformation.html">AI Business Transformation</a></li>
+
+                <li><a href="services/ai-saas-development.html">AI SaaS Development</a></li>
+
+                <li><a href="services/ai-marketing-sales.html">AI Marketing &amp; Sales</a></li>
+
+                <li><a href="services/business-automation-pack.html">Business Automation Pack</a></li>
+
+            </ul>
+
+        </div>
+
+        <!-- Company -->
+        <div class="footer-column">
+
+            <h3>Company</h3>
+
+            <ul>
+
+                <li><a href="index.html">Home</a></li>
+
+                <li><a href="#about">About Us</a></li>
+
+                <li><a href="#services">Services</a></li>
+
+                <li><a href="#projects">Projects</a></li>
+
+                <li><a href="#contact">Contact</a></li>
+
+            </ul>
+
+        </div>
+
+        <!-- Contact -->
+        <div class="footer-column">
+
+            <h3>Contact</h3>
+
+            <p>
+                <i class="fas fa-location-dot"></i>
+                Sehore, Madhya Pradesh, India
+            </p>
+
+            <p>
+                <i class="fas fa-envelope"></i>
+
+                <a href="mailto:mentroid@mentroid.co.in">
+                    mentroid@mentroid.co.in
+                </a>
+
+            </p>
+
+            <p>
+                Let's build something intelligent together.
+            </p>
+
+            <a href="#contact" class="footer-btn">
+                Get in Touch
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 <strong>Mentroid</strong>. All Rights Reserved.
+        </p>
+
+        <div class="footer-bottom-links">
+
+            <a href="#">Privacy Policy</a>
+
+            <a href="#">Terms & Conditions</a>
+
+        </div>
+
+    </div>
+
+</footer>
+
+  <!-- ══ CHAT FAB ══ -->
+  <div class="chat-fab" title="Chat with Mentroid Assistant" role="button" aria-label="Open Mentroid Assistant">
+    <!-- Mentroid AI icon: neural-net brain inside a rounded square -->
+    <svg class="chat-fab-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <!-- Outer glow ring -->
+      <circle cx="24" cy="24" r="22" stroke="rgba(167,139,250,0.35)" stroke-width="1.5"/>
+      <!-- Face / head shape -->
+      <rect x="10" y="10" width="28" height="28" rx="9" fill="rgba(124,58,237,0.25)" stroke="rgba(167,139,250,0.6)" stroke-width="1.5"/>
+      <!-- Eyes -->
+      <circle cx="18" cy="20" r="3" fill="#a78bfa"/>
+      <circle cx="30" cy="20" r="3" fill="#60a5fa"/>
+      <!-- Eye shine -->
+      <circle cx="19.2" cy="18.8" r="1" fill="rgba(255,255,255,0.8)"/>
+      <circle cx="31.2" cy="18.8" r="1" fill="rgba(255,255,255,0.8)"/>
+      <!-- Smile -->
+      <path d="M17 28 Q24 34 31 28" stroke="rgba(167,139,250,0.9)" stroke-width="2" stroke-linecap="round" fill="none"/>
+      <!-- Antenna -->
+      <line x1="24" y1="10" x2="24" y2="5" stroke="rgba(167,139,250,0.7)" stroke-width="1.5" stroke-linecap="round"/>
+      <circle cx="24" cy="4" r="2" fill="#a78bfa"/>
+      <!-- Side nodes -->
+      <circle cx="10" cy="24" r="2" fill="rgba(96,165,250,0.7)"/>
+      <circle cx="38" cy="24" r="2" fill="rgba(96,165,250,0.7)"/>
+    </svg>
+    <!-- Online indicator -->
+    <span class="chat-fab-online" aria-label="Online"></span>
+  </div>
+
+  <!-- ══ GET QUOTE MODAL ══ -->
+  <div id="quote-modal" class="qmodal-overlay" role="dialog" aria-modal="true" aria-labelledby="qmodal-title" hidden>
+    <div class="qmodal-box">
+      <!-- Animated background orbs -->
+      <div class="qmodal-orb qmodal-orb--1"></div>
+      <div class="qmodal-orb qmodal-orb--2"></div>
+      <div class="qmodal-orb qmodal-orb--3"></div>
+      <!-- Shimmer border sweep -->
+      <div class="qmodal-shimmer"></div>
+
+      <button class="qmodal-close" id="qmodal-close" aria-label="Close">&times;</button>
+      <div class="qmodal-header">
+        <div class="qmodal-icon-wrap">
+          <span class="qmodal-icon">💬</span>
+          <div class="qmodal-icon-ring"></div>
+        </div>
+        <h2 id="qmodal-title">Get a Quote</h2>
+        <p>Tell us about your project and we'll get back to you within 24 hours.</p>
+      </div>
+      <form id="quote-form" class="qmodal-form" novalidate>
+        <input type="hidden" name="to_email" value="mentroid@mentroid.co.in" />
+        <input type="hidden" name="package_name" id="qf-package" value="" />
+        <input type="text" name="_honey" class="form-honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+        <div class="qmodal-row">
+          <div class="form-group">
+            <label for="qf-name">Full Name <span class="req">*</span></label>
+            <input type="text" id="qf-name" name="from_name" placeholder="John Doe" autocomplete="name" required />
+          </div>
+          <div class="form-group">
+            <label for="qf-email">Email Address <span class="req">*</span></label>
+            <input type="email" id="qf-email" name="from_email" placeholder="john@example.com" autocomplete="email" required />
+          </div>
+        </div>
+
+        <div class="qmodal-row">
+          <div class="form-group">
+            <label for="qf-mobile">Mobile Number <span class="req">*</span></label>
+            <input type="tel" id="qf-mobile" name="mobile" placeholder="+91 98765 43210" autocomplete="tel" required />
+          </div>
+          <div class="form-group">
+            <label for="qf-designation">Designation / Role</label>
+            <input type="text" id="qf-designation" name="designation" placeholder="e.g. Founder, CTO, Manager" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="qf-location">Location <span class="req">*</span></label>
+          <select id="qf-location" name="location" required>
+            <option value="" disabled selected>Select your country</option>
+            <optgroup label="Asia">
+              <option>Afghanistan</option><option>Bangladesh</option><option>Bhutan</option>
+              <option>Cambodia</option><option>China</option><option>India</option>
+              <option>Indonesia</option><option>Japan</option><option>Kazakhstan</option>
+              <option>Malaysia</option><option>Maldives</option><option>Mongolia</option>
+              <option>Myanmar</option><option>Nepal</option><option>Pakistan</option>
+              <option>Philippines</option><option>Singapore</option><option>South Korea</option>
+              <option>Sri Lanka</option><option>Taiwan</option><option>Thailand</option>
+              <option>Uzbekistan</option><option>Vietnam</option>
+            </optgroup>
+            <optgroup label="Middle East">
+              <option>Bahrain</option><option>Egypt</option><option>Iran</option>
+              <option>Iraq</option><option>Israel</option><option>Jordan</option>
+              <option>Kuwait</option><option>Lebanon</option><option>Oman</option>
+              <option>Qatar</option><option>Saudi Arabia</option><option>Turkey</option>
+              <option>United Arab Emirates</option><option>Yemen</option>
+            </optgroup>
+            <optgroup label="Europe">
+              <option>Austria</option><option>Belgium</option><option>Czech Republic</option>
+              <option>Denmark</option><option>Finland</option><option>France</option>
+              <option>Germany</option><option>Greece</option><option>Hungary</option>
+              <option>Ireland</option><option>Italy</option><option>Netherlands</option>
+              <option>Norway</option><option>Poland</option><option>Portugal</option>
+              <option>Romania</option><option>Russia</option><option>Spain</option>
+              <option>Sweden</option><option>Switzerland</option><option>Ukraine</option>
+              <option>United Kingdom</option>
+            </optgroup>
+            <optgroup label="North America">
+              <option>Canada</option><option>Cuba</option><option>Guatemala</option>
+              <option>Jamaica</option><option>Mexico</option><option>United States</option>
+            </optgroup>
+            <optgroup label="South America">
+              <option>Argentina</option><option>Bolivia</option><option>Brazil</option>
+              <option>Chile</option><option>Colombia</option><option>Ecuador</option>
+              <option>Paraguay</option><option>Peru</option><option>Uruguay</option>
+              <option>Venezuela</option>
+            </optgroup>
+            <optgroup label="Africa">
+              <option>Algeria</option><option>Angola</option><option>Ethiopia</option>
+              <option>Ghana</option><option>Kenya</option><option>Morocco</option>
+              <option>Nigeria</option><option>South Africa</option><option>Tanzania</option>
+              <option>Uganda</option>
+            </optgroup>
+            <optgroup label="Oceania">
+              <option>Australia</option><option>Fiji</option><option>New Zealand</option>
+              <option>Papua New Guinea</option>
+            </optgroup>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="qf-details">General Details</label>
+          <input type="text" id="qf-details" name="general_details" placeholder="Brief overview of your business or project" />
+        </div>
+
+        <div class="form-group">
+          <label for="qf-problem">Problem Statement <span class="req">*</span></label>
+          <textarea id="qf-problem" name="problem_statement" placeholder="Describe the challenge or pain point you're facing..." required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="qf-solution">Expected Solution</label>
+          <textarea id="qf-solution" name="expected_solution" placeholder="What kind of solution are you looking for? (optional)"></textarea>
+        </div>
+
+        <div class="qmodal-footer">
+          <button type="submit" class="form-submit qmodal-submit" id="quote-submit">Send Quote Request</button>
+          <p id="quote-form-status" class="form-status" role="status" aria-live="polite" hidden></p>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="emailjs-config.js"></script>
+  <script src="contact-form.js"></script>
+  <script src="script.js"></script>
+  <script src="projects-slider.js"></script>
+  <script src="chatbot.js"></script>
+  <script src="voice-assistant.js"></script>
+
+</body>
+
+</html>
